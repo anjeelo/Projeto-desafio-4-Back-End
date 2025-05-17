@@ -1,0 +1,51 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "ecodescarte",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+      "underscoredAll": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at"
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "jdwNKqSbeysFvxrxxGIFjyOUzpjdkwRB",
+    "database": "railway",
+    "host": "yamanote.proxy.rlwy.net",
+    "port": 39878,
+    "dialect": "mysql",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "pool": {
+      "max": 10,
+      "min": 2,
+      "acquire": 60000,
+      "idle": 30000
+    },
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+      "underscoredAll": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at"
+    },
+    "logging": false
+  }
+}
