@@ -49,32 +49,35 @@ app.use(helmet({
 }));
 
 // CORS configurado para produção/desenvolvimento
+// Substitua a configuração atual do CORS por esta:
 const corsWhitelist = process.env.NODE_ENV === 'production'
-  ? [process.env.FRONTEND_URL]
+  ? [
+      'https://projeto-desafio-4.vercel.app', // Apenas o domínio base
+      process.env.FRONTEND_URL
+    ].filter(Boolean)
   : [
       'http://localhost:5500',
-      'http://127.0.0.1:5500',
+      'http://127.0.0.1:5500', 
       'http://localhost:3000',
-      'https://projeto-desafio-4.vercel.app/cadastro.html',
-      'https://projeto-desafio-4.vercel.app/login.html',
-      'https://projeto-desafio-4.vercel.app/perfil.html',
-      'https://projeto-desafio-4.vercel.app/login.html',
-      'https://projeto-desafio-4.vercel.app/index.html',
-      process.env.FRONTEND_URL
-    ].filter(Boolean);
+      'https://projeto-desafio-4.vercel.app' // Adicionei sem paths
+    ];
 
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || corsWhitelist.indexOf(origin) !== -1) {
+  origin: function (origin, callback) {
+    // Permite requests sem origem (como mobile apps ou curl)
+    if (!origin) return callback(null, true);
+    
+    if (corsWhitelist.some(domain => origin.startsWith(domain))) {
       callback(null, true);
     } else {
+      console.error('CORS blocked for origin:', origin);
       callback(new Error('Not allowed by CORS'));
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   credentials: true,
-  maxAge: parseInt(process.env.CORS_MAX_AGE) || 86400
+  maxAge: 86400
 }));
 
 // Rate limiting aprimorado
