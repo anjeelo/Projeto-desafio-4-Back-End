@@ -55,6 +55,11 @@ const corsWhitelist = process.env.NODE_ENV === 'production'
       'http://localhost:5500',
       'http://127.0.0.1:5500',
       'http://localhost:3000',
+      'https://projeto-desafio-4.vercel.app/cadastro.html',
+      'https://projeto-desafio-4.vercel.app/login.html',
+      'https://projeto-desafio-4.vercel.app/perfil.html',
+      'https://projeto-desafio-4.vercel.app/login.html',
+      'https://projeto-desafio-4.vercel.app/index.html',
       process.env.FRONTEND_URL
     ].filter(Boolean);
 
