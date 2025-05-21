@@ -22,10 +22,10 @@
   },
   "production": {
     "username": "root",
-    "password": "jdwNKqSbeysFvxrxxGIFjyOUzpjdkwRB",
+    "password": "xYsGJOGymmfQeefiAvjPknfPNOOIplrn",
     "database": "railway",
-    "host": "yamanote.proxy.rlwy.net",
-    "port": 39878,
+    "host": "tramway.proxy.rlwy.net",
+    "port": 40343,
     "dialect": "mysql",
     "dialectOptions": {
       "ssl": {
